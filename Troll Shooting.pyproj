@@ -49,13 +49,9 @@
     <Compile Include="State.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Troll.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Troll_Shooting.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

@@ -14,7 +14,7 @@ def main():
 	pygame.init()
 
 	size = [SCREEN_WIDTH, SCREEN_HEIGHT]
-	screen = pygame.display.set_mode(size)
+	screen = pygame.display.set_mode(size)#trello
 	
 	pygame.mouse.set_visible(False)
 	
