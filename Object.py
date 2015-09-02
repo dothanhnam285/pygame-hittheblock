@@ -12,14 +12,17 @@ class Object(pygame.sprite.Sprite):
 		self.width = 0
 		self.height = 0
 		
-	def init(self, type, colorkey, width = 0, height = 0, file_name = "", color = WHITE):
+	def init(self, type, colorkey, width = 0, height = 0, file_name = "", color = WHITE, alpha = True):
 		self.type = type
 		self.width = width
 		self.height = height
 
 		if (type == 'Image'):
-			self.image = pygame.image.load(file_name).convert_alpha()
-			self.image.set_colorkey(colorkey)
+			if (alpha == True):
+				self.image = pygame.image.load(file_name).convert_alpha()
+			else:
+				self.image = pygame.image.load(file_name).convert()
+				self.image.set_colorkey(colorkey)
 			
 		elif (type == 'Circle' or type == 'Ellipse'):
 			self.image = pygame.Surface([width, height])
@@ -55,3 +58,6 @@ class Object(pygame.sprite.Sprite):
 
 		else:
 			return
+
+	def draw(self, screen):
+		screen.blit(self.image, self.rect)

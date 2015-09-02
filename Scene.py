@@ -24,11 +24,6 @@ class Scene(State):
 		# Scale background to screen size
 		self.background.image = pygame.transform.scale(self.background.image, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
-		# TEST
-		#self.player = Player()
-		#self.player.init(type = 'Circle', colorkey = WHITE, width = 50, height = 50, color = RED)
-		#self.all_object_list.add(self.player)
-
 	def process_events(self, event):
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			return
@@ -48,7 +43,8 @@ class Scene(State):
 
 	def draw(self, screen):
 		screen.fill(WHITE)
-		screen.blit(self.background.image, self.background.rect)
+		#screen.blit(self.background.image, self.background.rect)
+		self.background.draw(screen)
 		self.all_object_list.draw(screen)
 
 	def read_scene(self):
@@ -64,7 +60,7 @@ class Scene(State):
 	def read_player(self, file):
 		file.readline()
 		image_id = int(file.readline().strip().split(' ')[1])
-		self.player.init('Image', None, file_name = ResourceManager.image_path_list[image_id])
+		self.player.init('Image', None, file_name = ResourceManager.image_path_list[image_id], alpha = True)
 		self.player.move(*map(int, file.readline().strip().split(' ')[1:]))
 		self.player.rotate(float(file.readline().strip().split(' ')[1]))
 		self.player.scale(*map(int, file.readline().strip().split(' ')[1:]))
